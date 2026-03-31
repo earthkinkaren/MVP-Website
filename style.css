@@ -302,13 +302,21 @@ strong { font-weight: 500; }
   padding-block: var(--s-xl);
 }
 
+.challenge .section-title { font-size: calc(var(--t-3xl) * 1.2); }
+
 /* Fade challenge bottom into cream (Intersections bg) */
 .challenge::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 160px;
-  background: linear-gradient(to bottom, transparent, var(--cream));
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(13,13,8,0.55) 55%,
+    rgba(13,13,8,0.75) 75%,
+    var(--cream) 100%
+  );
   pointer-events: none;
   z-index: 2;
 }
@@ -353,32 +361,54 @@ strong { font-weight: 500; }
   );
 }
 
-.vision-body { position: relative; z-index: 1; }
+.vision-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
 
 .vision-label {
   display: block;
   font-family: var(--script);
-  font-size: clamp(1.55rem, 3.5vw, 2.66rem);
+  font-size: calc(clamp(1.55rem, 3.5vw, 2.66rem) * 1.2);
   color: var(--gold);
   line-height: 1;
-  margin-bottom: 0.1em;
+  margin-bottom: 0;
+  white-space: nowrap;
 }
 
 .vision-title {
-  font-size: var(--t-5xl);
+  font-size: calc(var(--t-5xl) * 0.7);
   color: var(--cream);
   font-weight: 300;
-  max-width: 14ch;
+  max-width: 42ch; /* 300% of the prior max-width (14ch) */
 }
 
 /* ═══════════════════════════════════════════════════════════════
    INTERSECTIONS
 ═══════════════════════════════════════════════════════════════ */
 .intersections {
-  background: var(--cream);
+  background-color: #d4b5a0;
+  background-image: url("assets/pexels-wyxina-tresse-311038210-18611100-contour.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding-block: var(--s-xl);
   text-align: center;
   /* Top & bottom gradient blends via pseudo-elements */
+}
+
+.intersections #intersections-title {
+  color: #a5d19a;
+  font-size: calc(var(--t-3xl) * 1.3);
+}
+.intersections .section-sub.dark {
+  color: #f5f3e0;
+  font-size: calc(var(--t-lg) * 1.2);
+  text-align: center;
+  margin-inline: auto;
 }
 
 /* Top of intersections fades in from challenge dark-2 */
@@ -799,7 +829,9 @@ strong { font-weight: 500; }
   .nav-cta     { padding: 0.6rem 1.6rem; }
 
   .hero-title   { font-size: var(--t-3xl); }
-  .vision-title { font-size: var(--t-3xl); }
+  .vision-title { font-size: calc(var(--t-3xl) * 0.7); }
+  .vision-body { display: block; }
+  .vision-label { margin-bottom: 0.3em; white-space: normal; }
   .hero { align-items: center; padding-bottom: var(--s-lg); }
 
   .form-row { grid-template-columns: 1fr; }
