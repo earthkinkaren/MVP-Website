@@ -302,7 +302,10 @@ strong { font-weight: 500; }
   padding-block: var(--s-xl);
 }
 
-.challenge .section-title { font-size: calc(var(--t-3xl) * 1.2); }
+.challenge .section-title {
+  font-size: calc(var(--t-3xl) * 1.2);
+  color: #d9876b;
+}
 
 /* Fade challenge bottom into cream (Intersections bg) */
 .challenge::after {
@@ -380,10 +383,19 @@ strong { font-weight: 500; }
 }
 
 .vision-title {
-  font-size: calc(var(--t-5xl) * 0.7);
+  font-size: calc(var(--t-5xl) * 0.56); /* 0.7 × 0.8 — 20% smaller than prior */
   color: var(--cream);
   font-weight: 300;
+  line-height: 1.344; /* 20% more than base h2 (1.12) */
   max-width: 42ch; /* 300% of the prior max-width (14ch) */
+}
+
+/* Shift headline right ~10% of its box width; keep reveal Y-animation */
+.vision-title.reveal {
+  transform: translateY(28px) translateX(10%);
+}
+.vision-title.reveal.visible {
+  transform: translateX(10%);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -829,7 +841,7 @@ strong { font-weight: 500; }
   .nav-cta     { padding: 0.6rem 1.6rem; }
 
   .hero-title   { font-size: var(--t-3xl); }
-  .vision-title { font-size: calc(var(--t-3xl) * 0.7); }
+  .vision-title { font-size: calc(var(--t-3xl) * 0.56); }
   .vision-body { display: block; }
   .vision-label { margin-bottom: 0.3em; white-space: normal; }
   .hero { align-items: center; padding-bottom: var(--s-lg); }
